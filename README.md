@@ -22,15 +22,20 @@ ccs-website/
 
 ## Getting Started
 
-1. **Install dependencies:**
+1. **Clone the repository:**
+   ```sh
+   git clone <your-repo-url>
+   cd ccs-website
+   ```
+2. **Install dependencies:**
    ```sh
    npm install
    ```
-2. **Run the development server:**
+3. **Run the development server:**
    ```sh
    npm run dev
    ```
-3. **Open your browser:**
+4. **Open your browser:**
    Visit [http://localhost:3000](http://localhost:3000)
 
 ## Customization
