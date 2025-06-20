@@ -10,25 +10,25 @@ export default function HomePage() {
       title: "Computer Science",
       description: "Master the fundamentals of computing, algorithms, and software development.",
       href: "/computer-science",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/CS.png?height=200&width=300",
     },
     {
       title: "Information Technology",
       description: "Focus on practical applications of technology in business and organizations.",
       href: "/information-technology",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/IT.png?height=200&width=300",
     },
     {
       title: "Entertainment & Multimedia",
       description: "Create engaging digital content and interactive media experiences.",
       href: "/entertainment-multimedia",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/EMC.png?height=200&width=300",
     },
     {
       title: "Data Science & Analytics",
       description: "Extract insights from data to drive informed decision-making.",
       href: "/data-science-analytics",
-      image: "/placeholder.svg?height=200&width=300",
+      image: "/images/DSA.png?height=200&width=300",
     },
   ]
 
@@ -49,9 +49,9 @@ export default function HomePage() {
 
       {/* What is Computer Science Section */}
       <ProgramSection
-        title="Computer Science"
-        description="Computer Science is the study of computational systems, algorithms, and the design of computer systems and their applications. Our program combines theoretical foundations with practical skills, preparing students for careers in software development, artificial intelligence, cybersecurity, and emerging technologies. Students learn programming languages, data structures, computer architecture, and software engineering principles while working on real-world projects."
-        image="/placeholder.svg?height=400&width=600"
+        title="College of Computer Studies"
+        description="The College of Computer Studies is a premier institution dedicated to advancing technology education and innovation. We offer comprehensive programs in Computer Science, Information Technology, Data Science & Analytics, and Entertainment & Multimedia Communication. Our college combines rigorous academic curricula with hands-on learning experiences, preparing students for successful careers in the rapidly evolving technology industry. With state-of-the-art facilities, expert faculty, and strong industry partnerships, we foster an environment where students can explore cutting-edge technologies, develop critical thinking skills, and become leaders in their chosen fields."
+        image="/images/college-overview.png"
       />
 
       {/* Programs Overview */}
