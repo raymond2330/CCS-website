@@ -24,7 +24,7 @@ ccs-website/
 
 1. **Clone the repository:**
    ```sh
-   git clone <your-repo-url>
+   git clone https://github.com/raymond2330/CCS-website.git
    cd ccs-website
    ```
 2. **Install dependencies:**
