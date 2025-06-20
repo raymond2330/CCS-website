@@ -33,12 +33,6 @@ ccs-website/
 3. **Open your browser:**
    Visit [http://localhost:3000](http://localhost:3000)
 
-## Navigation Component
-
-- The navigation bar adapts to different screen sizes.
-- If the navigation links would overlap with the "College of Computer Studies" title, the links are hidden and a menu button appears.
-- The mobile menu provides access to all navigation links.
-
 ## Customization
 
 - Edit navigation links in `components/navigation.tsx`.
