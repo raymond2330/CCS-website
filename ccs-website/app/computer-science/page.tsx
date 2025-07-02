@@ -6,10 +6,10 @@ export default function ComputerSciencePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16">
+      <section className="bg-gradient-to-r from-red-600 to-red-800 text-white min-h-[300px] flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Computer Science</h1>
-          <p className="text-xl mb-8">Building the foundation for tomorrow's technology leaders</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Computer Science</h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Building the foundation for tomorrow's technology leaders</p>
         </div>
       </section>
 
@@ -17,20 +17,27 @@ export default function ComputerSciencePage() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-8">Discover Computer Science</h2>
-          <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <p className="text-gray-600">Promotional Video</p>
-              <p className="text-sm text-gray-500">Click to play our program overview video</p>
+          <div className="relative aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8 overflow-hidden">
+            {/* Blurred/dimmed background for portrait video */}
+            <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+              <img
+                src="/videos/preview/preview.jpg"
+                alt="Video background"
+                className="w-full h-full object-cover blur-lg scale-110"
+                aria-hidden="true"
+              />
             </div>
+            <video
+              className="relative z-10 max-h-full max-w-[40%] rounded-sm shadow-lg"
+              controls
+              poster="/videos/preview/preview.jpg"
+              preload="auto"
+              playsInline
+            >
+              <source src="/videos/CCS Promo vid.webm" type="video/webm" />
+              <source src="/videos/CCS Promo vid.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
@@ -86,15 +93,15 @@ export default function ComputerSciencePage() {
       {/* What is Computer Science */}
       <ProgramSection
         title="Computer Science"
-        description="Computer Science is a comprehensive field that encompasses the study of algorithms, computational systems, and the design of computer systems and their applications. Our program provides a strong foundation in programming, mathematics, and theoretical computer science while emphasizing practical problem-solving skills. Students explore areas such as software engineering, artificial intelligence, cybersecurity, database systems, and computer networks. The curriculum is designed to prepare graduates for diverse career paths in technology, from software development to research and innovation."
-        image="/placeholder.svg?height=400&width=600"
+        description="Computer Science is a comprehensive field that encompasses the study of algorithms, computational systems, and the design of computer systems and their applications. Our program provides a strong foundation in programming, mathematics, and theoretical computer science while emphasizing practical problem-solving skills. Students explore areas such as software engineering, machine learning, natural language processing, etc. The curriculum is designed to prepare graduates for diverse career paths in technology, from software development to research and innovation."
+        image="/images/pubmat/BSCS.png?height=400&width=600"
       />
 
       {/* Program Resources */}
       <ProgramResources
         programName="Computer Science"
         catalogYear="2024-2025"
-        accreditations={["ABET", "PACUCOA", "CHED Center of Excellence"]}
+        accreditations={["ABET", "PACUCOA", "CHED Center of Excellence", "Philippine Technological Council", "PICAB", "AUN"]}
       />
     </div>
   )

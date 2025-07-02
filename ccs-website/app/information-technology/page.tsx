@@ -6,31 +6,38 @@ export default function InformationTechnologyPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-600 to-teal-700 text-white py-16">
+      <section className="bg-gradient-to-r from-blue-600 to-violet-700 text-white min-h-[300px] flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Information Technology</h1>
-          <p className="text-xl mb-8">Bridging technology and business solutions</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">Information Technology</h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Bridging technology and business solutions</p>
         </div>
       </section>
 
       {/* Promotional Video Section */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-8">Explore Information Technology</h2>
-          <div className="aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              <p className="text-gray-600">Promotional Video</p>
-              <p className="text-sm text-gray-500">Discover our IT program overview</p>
+          <h2 className="text-3xl font-bold mb-8">Discover Computer Science</h2>
+          <div className="relative aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8 overflow-hidden">
+            {/* Blurred/dimmed background for portrait video */}
+            <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+              <img
+                src="/videos/preview/preview.jpg"
+                alt="Video background"
+                className="w-full h-full object-cover blur-lg scale-110"
+                aria-hidden="true"
+              />
             </div>
+            <video
+              className="relative z-10 max-h-full max-w-[40%] rounded-sm shadow-lg"
+              controls
+              poster="/videos/preview/preview.jpg"
+              preload="auto"
+              playsInline
+            >
+              <source src="/videos/CCS Promo vid.webm" type="video/webm" />
+              <source src="/videos/CCS Promo vid.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </section>
@@ -83,14 +90,14 @@ export default function InformationTechnologyPage() {
       <ProgramSection
         title="Information Technology"
         description="Information Technology focuses on the practical application of technology to solve business and organizational challenges. Our IT program emphasizes hands-on experience with enterprise systems, network administration, database management, and cybersecurity. Students learn to bridge the gap between technical solutions and business needs, developing skills in system analysis, project management, and IT service delivery. The curriculum covers areas such as cloud computing, mobile technologies, web development, and IT infrastructure management, preparing graduates for roles as IT professionals, system administrators, and technology consultants."
-        image="/placeholder.svg?height=400&width=600"
+        image="/images/pubmat/BSIT.png?height=400&width=600"
       />
 
       {/* Program Resources */}
       <ProgramResources
         programName="Information Technology"
         catalogYear="2024-2025"
-        accreditations={["PACUCOA", "CHED Center of Excellence", "PICAB"]}
+        accreditations={["ABET", "PACUCOA", "CHED Center of Excellence", "Philippine Technological Council", "PICAB", "AUN"]}
       />
     </div>
   )

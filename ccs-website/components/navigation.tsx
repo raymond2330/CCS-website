@@ -1,12 +1,41 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
+  const [showNav, setShowNav] = useState(true)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    let ticking = false
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          // Prevent hiding nav when mobile menu is open
+          if (isOpen) {
+            ticking = false
+            return
+          }
+          const currentScrollY = window.scrollY
+          if (currentScrollY > lastScrollY.current && currentScrollY > 64) {
+            setShowNav(false)
+          } else {
+            setShowNav(true)
+          }
+          lastScrollY.current = currentScrollY
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [isOpen])
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -18,14 +47,21 @@ export default function Navigation() {
   ]
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav
+      className={`bg-white shadow-lg sticky top-0 z-50 transition-transform duration-500 ease-in-out ${showNav || isOpen ? "translate-y-0" : "-translate-y-full"}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-wrap items-center">
             <Link href="/" className="flex-shrink-0 flex items-center space-x-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">CCS</span>
-              </div>
+              <Image
+                src="/images/CCS/logo.png"
+                alt="CCS Logo"
+                width={50}
+                height={50}
+                className="rounded-lg object-cover w-10 h-10"
+                priority
+              />
               <h1 className="text-xl font-bold text-blue-600 hidden sm:block">College of Computer Studies</h1>
             </Link>
           </div>

@@ -35,7 +35,30 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
+      <section className="relative bg-gradient-to-r from-blue-600/90 to-purple-700/90 text-white min-h-[300px] flex items-center">
+        {/* Background Image */}
+        {/* <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/CCS/banner.png"
+            alt="College of Computer Studies Banner"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/70 to-purple-700/70"></div>
+        </div> */}
+        
+        {/* Content */}
+        {/* <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-xl text-white">College of Computer Studies</h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto drop-shadow-lg text-white/95">
+            Shaping the future through innovative technology education and cutting-edge research
+          </p>
+          <Button size="lg" variant="secondary" asChild>
+            <Link href="/faculty-staff">Meet Our Faculty</Link>
+          </Button>
+        </div> */}
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">College of Computer Studies</h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
