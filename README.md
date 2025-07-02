@@ -37,12 +37,3 @@ ccs-website/
    ```
 4. **Open your browser:**
    Visit [http://localhost:3000](http://localhost:3000)
-
-## Customization
-
-- Edit navigation links in `components/navigation.tsx`.
-- Update styles using Tailwind CSS classes in the component files.
-
----
-
-© College of Computer Studies, 2025
