@@ -58,31 +58,49 @@ export default function ProgramResources(props: ProgramResourcesProps) {
       "AUN",
     ],
   } = props;
-  const [fileExists, setFileExists] = useState({
+
+  // Special handling for Entertainment & Multimedia Communication
+  const isEMC = programName === "Entertainment & Multimedia Communication";
+  const emcTracks = [
+    { label: "Game Development (GD)", file: "Curriculum GD.pdf", key: "gd" as const },
+    { label: "Digital Animation Technology (DAT)", file: "Curriculum DAT.pdf", key: "dat" as const },
+  ];
+
+  const [fileExists, setFileExists] = useState<{
+    catalog: boolean;
+    curriculum: boolean;
+    brochure: boolean;
+    gd: boolean;
+    dat: boolean;
+  }>({
     catalog: true,
     curriculum: true,
     brochure: true,
-  })
+    gd: true,
+    dat: true,
+  });
 
   useEffect(() => {
     // Check if files exist in public folder using fetch (HEAD request)
-    const checkFile = async (type: string, file: string) => {
+    const checkFile = async (file: string) => {
       try {
-        const res = await fetch(`/pdfs/${encodeURIComponent(programName)}/${file}`, { method: 'HEAD' })
-        return res.ok
+        const res = await fetch(`/pdfs/${encodeURIComponent(programName)}/${file}`, { method: 'HEAD' });
+        return res.ok;
       } catch {
-        return false
+        return false;
       }
-    }
+    };
     (async () => {
-      const [catalog, curriculum, brochure] = await Promise.all([
-        checkFile('catalog', 'Course-Catalog.pdf'),
-        checkFile('curriculum', 'Curriculum.pdf'),
-        checkFile('brochure', 'Brochure.pdf'),
-      ])
-      setFileExists({ catalog, curriculum, brochure })
-    })()
-  }, [programName])
+      const [catalog, curriculum, brochure, gd, dat] = await Promise.all([
+        checkFile('Course-Catalog.pdf'),
+        checkFile('Curriculum.pdf'),
+        checkFile('Brochure.pdf'),
+        isEMC ? checkFile('Curriculum GD.pdf') : Promise.resolve(false),
+        isEMC ? checkFile('Curriculum DAT.pdf') : Promise.resolve(false),
+      ]);
+      setFileExists({ catalog, curriculum, brochure, gd, dat });
+    })();
+  }, [programName, isEMC]);
 
   return (
     <section className="py-16">
@@ -133,27 +151,62 @@ export default function ProgramResources(props: ProgramResourcesProps) {
             <div className="flex-1 min-w-0 overflow-x-auto">
               <h4 className="font-semibold">{programName} Program Curriculum</h4>
               <p className="text-sm text-gray-600">Detailed {programName} curriculum structure and requirements</p>
-              {/* Place your PDF in public/pdfs/<Program Folder>/Curriculum.pdf */}
-              <Button
-                variant="link"
-                className="p-0 h-auto mt-2"
-                asChild
-                disabled={!fileExists.curriculum}
-                aria-disabled={!fileExists.curriculum}
-                title={fileExists.curriculum ? undefined : 'File not available'}
-              >
-                <a
-                  href={fileExists.curriculum ? `/pdfs/${encodeURIComponent(programName)}/Curriculum.pdf` : undefined}
-                  download={fileExists.curriculum || undefined}
-                  tabIndex={fileExists.curriculum ? 0 : -1}
-                  aria-disabled={!fileExists.curriculum}
-                  style={!fileExists.curriculum ? { pointerEvents: 'none', color: '#aaa' } : {}}
-                >
-                  Download {programName} Curriculum PDF
-                </a>
-              </Button>
-              {!fileExists.curriculum && (
-                <p className="text-xs text-red-500 mt-1">File not available</p>
+              {!isEMC ? (
+                <>
+                  <Button
+                    variant="link"
+                    className="p-0 h-auto mt-2"
+                    asChild
+                    disabled={!fileExists.curriculum}
+                    aria-disabled={!fileExists.curriculum}
+                    title={fileExists.curriculum ? undefined : 'File not available'}
+                  >
+                    <a
+                      href={fileExists.curriculum ? `/pdfs/${encodeURIComponent(programName)}/Curriculum.pdf` : undefined}
+                      download={fileExists.curriculum || undefined}
+                      tabIndex={fileExists.curriculum ? 0 : -1}
+                      aria-disabled={!fileExists.curriculum}
+                      style={!fileExists.curriculum ? { pointerEvents: 'none', color: '#aaa' } : {}}
+                    >
+                      Download {programName} Curriculum PDF
+                    </a>
+                  </Button>
+                  {!fileExists.curriculum && (
+                    <p className="text-xs text-red-500 mt-1">File not available</p>
+                  )}
+                </>
+              ) : (
+                // For EMC, show both tracks. Need this to handle both tracks separately
+                <div className="flex-1 min-w-0 overflow-x-auto">
+                  {emcTracks.map((track) => (
+                    <Button
+                      key={track.key}
+                      variant="link"
+                      className="p-0 h-auto"
+                      asChild
+                      disabled={!fileExists[track.key]}
+                      aria-disabled={!fileExists[track.key]}
+                      title={fileExists[track.key] ? undefined : 'File not available'}
+                    >
+                      <a
+                        href={fileExists[track.key] ? `/pdfs/${encodeURIComponent(programName)}/${track.file}` : undefined}
+                        download={fileExists[track.key] || undefined}
+                        tabIndex={fileExists[track.key] ? 0 : -1}
+                        aria-disabled={!fileExists[track.key]}
+                        style={!fileExists[track.key] ? { pointerEvents: 'none', color: '#aaa' } : {}}
+                      >
+                        Download {track.label} Curriculum PDF
+                      </a>
+                    </Button>
+                  ))}
+                  {emcTracks.map((track) =>
+                    !fileExists[track.key] ? (
+                      <p key={track.key + '-err'} className="text-xs text-red-500 mt-1">
+                        {track.label} file not available
+                      </p>
+                    ) : null
+                  )}
+                </div>
               )}
             </div>
           </div>
