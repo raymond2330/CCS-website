@@ -9,7 +9,7 @@ export default function ComputerSciencePage() {
       <section className="bg-gradient-to-r from-red-600 to-red-800 text-white min-h-[300px] flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Computer Science</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Building the foundation for tomorrow's technology leaders</p>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Building the foundation for tomorrow&apos;s technology leaders</p>
         </div>
       </section>
 
@@ -20,9 +20,10 @@ export default function ComputerSciencePage() {
           <div className="relative aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8 overflow-hidden">
             {/* Blurred/dimmed background for portrait video */}
             <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-              <img
+              <Image
                 src="/videos/preview/preview.jpg"
                 alt="Video background"
+                fill
                 className="w-full h-full object-cover blur-lg scale-110"
                 aria-hidden="true"
               />

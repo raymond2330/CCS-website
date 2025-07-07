@@ -20,9 +20,10 @@ export default function EntertainmentMultimediaPage() {
           <div className="relative aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8 overflow-hidden">
             {/* Blurred/dimmed background for portrait video */}
             <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-              <img
+              <Image
                 src="/videos/preview/preview.jpg"
                 alt="Video background"
+                fill
                 className="w-full h-full object-cover blur-lg scale-110"
                 aria-hidden="true"
               />
