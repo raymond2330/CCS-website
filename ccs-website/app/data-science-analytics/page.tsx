@@ -49,7 +49,7 @@ export default function DataScienceAnalyticsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
+                src="/images/program-highlight/CS/machine-learning.png?height=250&width=350"
                 alt="Machine Learning"
                 width={350}
                 height={250}
@@ -62,7 +62,7 @@ export default function DataScienceAnalyticsPage() {
             </div>
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
+                src="/images/program-highlight/DSA/Big Data Analytics.png?height=250&width=350"
                 alt="Big Data Analytics"
                 width={350}
                 height={250}
@@ -75,14 +75,14 @@ export default function DataScienceAnalyticsPage() {
             </div>
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
-                alt="Data Visualization"
+                src="/images/program-highlight/DSA/Deep Learning.png?height=250&width=350"
+                alt="Deep Learning"
                 width={350}
                 height={250}
                 className="rounded-lg mb-4 mx-auto"
               />
-              <h3 className="text-xl font-semibold mb-2">Data Visualization</h3>
-              <p className="text-gray-600">Create compelling visual narratives from complex data sets.</p>
+              <h3 className="text-xl font-semibold mb-2">Deep Learning</h3>
+              <p className="text-gray-600">Master neural networks and deep learning architectures for complex pattern recognition and AI applications.</p>
             </div>
           </div>
         </div>

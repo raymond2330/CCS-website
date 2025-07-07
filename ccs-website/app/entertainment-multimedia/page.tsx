@@ -49,7 +49,7 @@ export default function EntertainmentMultimediaPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
+                src="/images/program-highlight/IT/Animation.png?height=250&width=350"
                 alt="Digital Animation"
                 width={350}
                 height={250}
@@ -60,7 +60,7 @@ export default function EntertainmentMultimediaPage() {
             </div>
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
+                src="/images/program-highlight/EMC/Game Development.png?height=250&width=350"
                 alt="Game Development"
                 width={350}
                 height={250}
@@ -71,14 +71,14 @@ export default function EntertainmentMultimediaPage() {
             </div>
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
-                alt="Digital Media Production"
+                src="/images/program-highlight/EMC/Game Production.png?height=250&width=350"
+                alt="Game Production"
                 width={350}
                 height={250}
                 className="rounded-lg mb-4 mx-auto"
               />
-              <h3 className="text-xl font-semibold mb-2">Digital Media Production</h3>
-              <p className="text-gray-600">Master video production, audio editing, and multimedia content creation.</p>
+              <h3 className="text-xl font-semibold mb-2">Game Production</h3>
+              <p className="text-gray-600">Learn the complete game production pipeline from concept to release, including project management and team collaboration.</p>
             </div>
           </div>
         </div>

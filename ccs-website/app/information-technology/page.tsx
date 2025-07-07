@@ -49,7 +49,7 @@ export default function InformationTechnologyPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
+                src="/images/program-highlight/IT/Network Infrastructure.png?height=250&width=350"
                 alt="Network Infrastructure"
                 width={350}
                 height={250}
@@ -60,18 +60,18 @@ export default function InformationTechnologyPage() {
             </div>
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
-                alt="Cloud Computing"
+                src="/images/program-highlight/IT/Animation.png?height=250&width=350"
+                alt="Animation"
                 width={350}
                 height={250}
                 className="rounded-lg mb-4 mx-auto"
               />
-              <h3 className="text-xl font-semibold mb-2">Cloud Computing</h3>
-              <p className="text-gray-600">Master cloud platforms and services for modern business solutions.</p>
+              <h3 className="text-xl font-semibold mb-2">Animation</h3>
+              <p className="text-gray-600">Create engaging multimedia content using industry-standard animation and digital media tools for web and mobile applications.</p>
             </div>
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
+                src="/images/program-highlight/IT/Cybersecurity.png?height=250&width=350"
                 alt="Cybersecurity"
                 width={350}
                 height={250}

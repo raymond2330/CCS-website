@@ -49,41 +49,41 @@ export default function ComputerSciencePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
-                alt="Programming Lab"
+                src="/images/program-highlight/CS/algorithm.png?height=250&width=350"
+                alt="Algorithm"
                 width={350}
                 height={250}
                 className="rounded-lg mb-4 mx-auto"
               />
-              <h3 className="text-xl font-semibold mb-2">Modern Programming Labs</h3>
+              <h3 className="text-xl font-semibold mb-2">Algorithm</h3>
               <p className="text-gray-600">
-                State-of-the-art facilities equipped with the latest development tools and technologies.
+                Master fundamental and advanced algorithms including sorting, searching, graph algorithms, dynamic programming, and computational complexity analysis.
               </p>
             </div>
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
-                alt="AI Research"
+                src="/images/program-highlight/CS/machine-learning.png?height=250&width=350"
+                alt="Machine Learning"
                 width={350}
                 height={250}
                 className="rounded-lg mb-4 mx-auto"
               />
-              <h3 className="text-xl font-semibold mb-2">AI & Machine Learning</h3>
+              <h3 className="text-xl font-semibold mb-2">Machine Learning</h3>
               <p className="text-gray-600">
-                Cutting-edge research opportunities in artificial intelligence and machine learning.
+                Cutting-edge research opportunities in machine learning.
               </p>
             </div>
             <div className="text-center">
               <Image
-                src="/placeholder.svg?height=250&width=350"
-                alt="Industry Partnership"
+                src="/images/program-highlight/CS/modeling-and-simulation.png?height=250&width=350"
+                alt="Modeling and Simulation"
                 width={350}
                 height={250}
                 className="rounded-lg mb-4 mx-auto"
               />
-              <h3 className="text-xl font-semibold mb-2">Industry Partnerships</h3>
+              <h3 className="text-xl font-semibold mb-2">Modeling and Simulation</h3>
               <p className="text-gray-600">
-                Strong connections with leading tech companies for internships and job placements.
+                Learn to create mathematical models and computer simulations for real-world systems, scientific computing, and predictive analysis.
               </p>
             </div>
           </div>
