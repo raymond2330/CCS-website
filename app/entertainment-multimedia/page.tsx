@@ -16,7 +16,7 @@ export default function EntertainmentMultimediaPage() {
       {/* Promotional Video Section */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-8">Discover Computer Science</h2>
+          <h2 className="text-3xl font-bold mb-8">Discover Entertainment & Multimedia Communication</h2>
           <div className="relative aspect-video bg-gray-200 rounded-lg flex items-center justify-center mb-8 overflow-hidden">
             {/* Blurred/dimmed background for portrait video */}
             <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
