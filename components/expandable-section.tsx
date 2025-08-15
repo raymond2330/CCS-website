@@ -59,8 +59,8 @@ export default function ProgramResources(props: ProgramResourcesProps) {
     ],
   } = props;
 
-  // Special handling for Entertainment & Multimedia Communication
-  const isEMC = programName === "Entertainment & Multimedia Communication";
+  // Special handling for Entertainment & Multimedia Computing
+  const isEMC = programName === "Entertainment & Multimedia Computing";
   const emcTracks = [
     { label: "Game Development (GD)", file: "Curriculum GD.pdf", key: "gd" as const },
     { label: "Digital Animation Technology (DAT)", file: "Curriculum DAT.pdf", key: "dat" as const },

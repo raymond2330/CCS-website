@@ -117,7 +117,7 @@ export default function FacultyStaffPage() {
       {
         name: "Melvin A. Ballera, PhD",
         title: "Associate Professor",
-        education: "Ph.D. in Statistics",
+        education: "Ph.D. in Computer Science",
         specialization: "Algorithm, Machine Learning",
         image: "/images/Faculty/Dr. Melvin A. Ballera.jpg",
       },

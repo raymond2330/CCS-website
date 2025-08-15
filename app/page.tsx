@@ -73,7 +73,7 @@ export default function HomePage() {
       {/* What is Computer Science Section */}
       <ProgramSection
         title="College of Computer Studies"
-        description="The College of Computer Studies is a premier institution dedicated to advancing technology education and innovation. We offer comprehensive programs in Computer Science, Information Technology, Data Science & Analytics, and Entertainment & Multimedia Communication. Our college combines rigorous academic curricula with hands-on learning experiences, preparing students for successful careers in the rapidly evolving technology industry. With state-of-the-art facilities, expert faculty, and strong industry partnerships, we foster an environment where students can explore cutting-edge technologies, develop critical thinking skills, and become leaders in their chosen fields."
+        description="The College of Computer Studies is a premier institution dedicated to advancing technology education and innovation. We offer comprehensive programs in Computer Science, Information Technology, Data Science & Analytics, and Entertainment & Multimedia Computing. Our college combines rigorous academic curricula with hands-on learning experiences, preparing students for successful careers in the rapidly evolving technology industry. With state-of-the-art facilities, expert faculty, and strong industry partnerships, we foster an environment where students can explore cutting-edge technologies, develop critical thinking skills, and become leaders in their chosen fields."
         image="/images/college-overview.png"
       />
 
