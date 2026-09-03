@@ -9,9 +9,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "lint": "next lint",
-    "heroku-postbuild": "npm run build"
+    "preview": "npm run build && npm start"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",

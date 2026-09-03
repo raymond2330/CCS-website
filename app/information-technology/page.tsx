@@ -1,6 +1,7 @@
 import Image from "next/image"
 import ProgramSection from "@/components/program-section"
 import ProgramResources from "@/components/expandable-section"
+import { assetPath } from "@/lib/asset-path"
 
 export default function InformationTechnologyPage() {
   return (
@@ -31,12 +32,11 @@ export default function InformationTechnologyPage() {
             <video
               className="relative z-10 max-h-full max-w-[40%] rounded-sm shadow-lg"
               controls
-              poster="/videos/preview/preview.jpg"
+              poster={assetPath("/videos/preview/preview.jpg")}
               preload="auto"
               playsInline
             >
-              <source src="/videos/CCS Promo vid.webm" type="video/webm" />
-              <source src="/videos/CCS Promo vid.mp4" type="video/mp4" />
+              <source src={assetPath("/videos/CCS Promo vid.mp4")} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

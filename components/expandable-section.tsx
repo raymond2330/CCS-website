@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import { ChevronDown, ChevronUp, FileText, Award } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { assetPath } from "@/lib/asset-path"
 
 interface ExpandableSectionProps {
   title: string
@@ -84,7 +85,7 @@ export default function ProgramResources(props: ProgramResourcesProps) {
     // Check if files exist in public folder using fetch (HEAD request)
     const checkFile = async (file: string) => {
       try {
-        const res = await fetch(`/pdfs/${encodeURIComponent(programName)}/${file}`, { method: 'HEAD' });
+        const res = await fetch(assetPath(`/pdfs/${encodeURIComponent(programName)}/${file}`), { method: 'HEAD' });
         return res.ok;
       } catch {
         return false;
@@ -127,7 +128,7 @@ export default function ProgramResources(props: ProgramResourcesProps) {
                 title={fileExists.catalog ? undefined : 'File not available'}
               >
                 <a
-                  href={fileExists.catalog ? `/pdfs/${encodeURIComponent(programName)}/Course-Catalog.pdf` : undefined}
+                  href={fileExists.catalog ? assetPath(`/pdfs/${encodeURIComponent(programName)}/Course-Catalog.pdf`) : undefined}
                   download={fileExists.catalog || undefined}
                   tabIndex={fileExists.catalog ? 0 : -1}
                   aria-disabled={!fileExists.catalog}
@@ -162,7 +163,7 @@ export default function ProgramResources(props: ProgramResourcesProps) {
                     title={fileExists.curriculum ? undefined : 'File not available'}
                   >
                     <a
-                      href={fileExists.curriculum ? `/pdfs/${encodeURIComponent(programName)}/Curriculum.pdf` : undefined}
+                      href={fileExists.curriculum ? assetPath(`/pdfs/${encodeURIComponent(programName)}/Curriculum.pdf`) : undefined}
                       download={fileExists.curriculum || undefined}
                       tabIndex={fileExists.curriculum ? 0 : -1}
                       aria-disabled={!fileExists.curriculum}
@@ -189,7 +190,7 @@ export default function ProgramResources(props: ProgramResourcesProps) {
                       title={fileExists[track.key] ? undefined : 'File not available'}
                     >
                       <a
-                        href={fileExists[track.key] ? `/pdfs/${encodeURIComponent(programName)}/${track.file}` : undefined}
+                        href={fileExists[track.key] ? assetPath(`/pdfs/${encodeURIComponent(programName)}/${track.file}`) : undefined}
                         download={fileExists[track.key] || undefined}
                         tabIndex={fileExists[track.key] ? 0 : -1}
                         aria-disabled={!fileExists[track.key]}
@@ -230,7 +231,7 @@ export default function ProgramResources(props: ProgramResourcesProps) {
                 title={fileExists.brochure ? undefined : 'File not available'}
               >
                 <a
-                  href={fileExists.brochure ? `/pdfs/${encodeURIComponent(programName)}/Brochure.pdf` : undefined}
+                  href={fileExists.brochure ? assetPath(`/pdfs/${encodeURIComponent(programName)}/Brochure.pdf`) : undefined}
                   download={fileExists.brochure || undefined}
                   tabIndex={fileExists.brochure ? 0 : -1}
                   aria-disabled={!fileExists.brochure}
