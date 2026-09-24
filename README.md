@@ -11,9 +11,10 @@ A modern, responsive website for the College of Computer Studies, built with Nex
 - [Running it locally](#running-it-locally)
 - [Deploying to GitHub Pages](#deploying-to-github-pages)
 - [How the deployment works](#how-the-deployment-works)
-- [Adding images, videos and PDFs](#adding-images-videos-and-pdfs)
+- [Adding images and PDFs](#adding-images-and-pdfs)
 - [Troubleshooting](#troubleshooting)
 - [Using a custom domain](#using-a-custom-domain)
+- [Editing content](#editing-content)
 - [Project structure](#project-structure)
 
 ---
@@ -84,7 +85,7 @@ git push origin main
 1. Open the **Actions** tab of your repository.
 2. You will see a run named **Deploy to GitHub Pages**. Click it.
 3. It runs two jobs, `build` then `deploy`. A full run takes roughly 2–4 minutes
-   (most of that is uploading the video and PDFs).
+   (most of that is uploading images and PDFs).
 4. When both jobs show a green check, the `deploy` job displays the live URL.
 
 Your site is at:
@@ -152,7 +153,7 @@ Do not delete `public/.nojekyll`.
 
 ---
 
-## Adding images, videos and PDFs
+## Adding images and PDFs
 
 Put files under `public/`, then reference them by the path **after** `public`.
 For example `public/images/CCS/logo.png` is referenced as `/images/CCS/logo.png`.
@@ -169,7 +170,7 @@ import Image from "next/image"
 
 The custom loader in `lib/image-loader.ts` adds the base path automatically.
 
-**For anything else — `<video>`, `<source>`, `<a href>` — wrap it in `assetPath()`.**
+**For anything else — `<a href>`, `<video>`, `<source>` — wrap it in `assetPath()`.**
 
 Raw HTML tags do not go through Next.js, so they need the prefix added by hand:
 
@@ -177,31 +178,20 @@ Raw HTML tags do not go through Next.js, so they need the prefix added by hand:
 import { assetPath } from "@/lib/asset-path"
 
 <a href={assetPath("/pdfs/Computer Science/Curriculum.pdf")}>Download</a>
-<video poster={assetPath("/videos/preview/preview.jpg")}>
-  <source src={assetPath("/videos/CCS Promo vid.mp4")} type="video/mp4" />
-</video>
 ```
 
 Forgetting `assetPath()` is the single most common way to break the deployed
 site while everything still looks fine locally.
 
-### Program PDFs
+### Program PDFs and artwork
 
-The download buttons on each program page look for these files, and a button is
-automatically disabled if its file is missing:
+Each program's downloads are listed under `resources` in `lib/programs.ts`,
+with the path and file size shown on the page. To add or replace a PDF, drop it
+in `public/pdfs/<Program Name>/` and update that list.
 
-```
-public/pdfs/<Program Name>/Course-Catalog.pdf
-public/pdfs/<Program Name>/Curriculum.pdf
-public/pdfs/<Program Name>/Brochure.pdf
-```
-
-`<Program Name>` must match the `programName` passed to `ProgramResources` in
-that page **exactly**, spaces and `&` included — for example
-`public/pdfs/Entertainment & Multimedia Computing/`.
-
-Entertainment & Multimedia Computing additionally uses
-`Curriculum GD.pdf` and `Curriculum DAT.pdf` for its two tracks.
+Program artwork is original illustration generated in GIMP from
+`design/program-art/` (not photos, so nothing implies it shows our own labs or
+rooms). See the README in that folder for how to edit or regenerate it.
 
 ---
 
@@ -210,10 +200,10 @@ Entertainment & Multimedia Computing additionally uses
 **The page loads but has no styling, and nothing is clickable.**
 `public/.nojekyll` is missing. Restore it, commit, and push.
 
-**Images, the video or PDFs return 404 on the live site but work locally.**
+**Images or PDFs return 404 on the live site but work locally.**
 Something references a path without the base path. Images should use
 `next/image`; raw tags should use `assetPath()`. See
-[Adding images, videos and PDFs](#adding-images-videos-and-pdfs).
+[Adding images and PDFs](#adding-images-and-pdfs).
 
 **The Actions tab shows a red X on the `build` job.**
 Click the run, then the failed step, and read the log. Usually it is a
@@ -231,11 +221,6 @@ be **GitHub Actions**, and workflow permissions must be **Read and write**.
 **I pushed but no workflow ran.**
 The workflow only triggers on the `main` branch. Confirm with
 `git branch --show-current`.
-
-**The promotional video is slow to load.**
-`public/videos/CCS Promo vid.mp4` is about 53 MB. That is within GitHub's
-limits, but it is a large download for visitors. Compressing it, or hosting it
-on YouTube and embedding it, would speed the page up noticeably.
 
 ---
 
@@ -262,31 +247,39 @@ must be removed:
 
 ---
 
+## Editing content
+
+| What                                              | Where                  |
+| ------------------------------------------------- | ---------------------- |
+| Program text, specializations, careers, downloads | `lib/programs.ts`      |
+| Faculty and staff                                 | `lib/faculty.ts`       |
+| News, events, organizations, contact details      | `lib/site-data.ts`     |
+| Colors (navy, brand blue, gold) and dark mode     | `app/globals.css`      |
+
+All program pages come from one template, `app/[program]/page.tsx`, so
+they always share the same layout.
+
+---
+
 ## Project structure
 
 ```
 CCS-website/
 ├── .github/workflows/deploy.yml   Builds and publishes to GitHub Pages
 ├── app/                           Pages (Next.js App Router)
-│   ├── layout.tsx                 Shared shell: nav, footer, fonts
+│   ├── layout.tsx                 Shared shell: nav, footer, fonts, theme
 │   ├── page.tsx                   Home page
-│   ├── computer-science/          Program pages
-│   ├── data-science-analytics/
-│   ├── entertainment-multimedia/
-│   ├── information-technology/
-│   └── faculty-staff/
-├── components/                    Reusable React components
-│   ├── navigation.tsx             Responsive navbar
-│   ├── program-section.tsx        "What is <program>?" block
-│   ├── expandable-section.tsx     Collapsible PDF download panels
-│   └── ui/                        Button, card, badge primitives
+│   ├── [program]/page.tsx         Template for every program page
+│   └── faculty-staff/             Faculty directory
+├── components/                    Shared building blocks (nav, footer, page hero, cards…)
+├── design/program-art/            GIMP masters and generator for program artwork (not deployed)
 ├── lib/
+│   ├── programs.ts  faculty.ts  site-data.ts   Site content
 │   ├── asset-path.ts              Adds the base path to raw asset URLs
-│   ├── image-loader.ts            Base path for next/image on static export
-│   └── utils.ts                   Tailwind class merging helper
+│   └── image-loader.ts            Base path for next/image on static export
 ├── public/                        Static files, served as-is
 │   ├── .nojekyll                  Stops GitHub Pages from deleting _next/
-│   ├── images/  videos/  pdfs/
+│   ├── images/  pdfs/
 └── next.config.ts                 Static export + base path configuration
 ```
 

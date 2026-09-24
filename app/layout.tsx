@@ -1,14 +1,18 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import Navigation from "@/components/navigation"
+import SiteFooter from "@/components/site-footer"
+import ScrollReveal from "@/components/scroll-reveal"
+import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"] })
+const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap" })
 
 export const metadata: Metadata = {
-  title: "College of Computer Studies",
-  description: "Leading computer science education and innovation",
+  title: "College of Computer Studies | T.I.P. Manila",
+  description:
+    "Computer Science, Information Technology, Entertainment & Multimedia Computing, and Data Science & Analytics programs at T.I.P. Manila.",
 }
 
 export default function RootLayout({
@@ -17,15 +21,24 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Navigation />
-        <main>{children}</main>
-        <footer className="bg-gray-800 text-white py-8">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; 2025 College of Computer Studies. All rights reserved.</p>
-          </div>
-        </footer>
+    <html lang="en" className={jakarta.variable} suppressHydrationWarning>
+      <head>
+        {/* Lets CSS hide scroll-reveal content only when JS can reveal it again */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body className="font-sans">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          <a
+            href="#main"
+            className="sr-only z-[60] rounded-md bg-gold px-4 py-2 font-bold text-gold-foreground focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+          >
+            Skip to content
+          </a>
+          <Navigation />
+          <main id="main">{children}</main>
+          <SiteFooter />
+          <ScrollReveal />
+        </ThemeProvider>
       </body>
     </html>
   )
